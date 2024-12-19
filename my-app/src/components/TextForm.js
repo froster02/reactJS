@@ -22,7 +22,7 @@ export default function TextForm(props) {
     //text = "new text" //wrong way to change the state
     //setTex("new text")
     return (
-        <div>
+        <>
             <h1>{props.heading}</h1>
             <div className="mb-3">
                 <textarea
@@ -37,13 +37,12 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={handleClrText}>Clear Text</button>
             </div>
             <div className="container my-3">
-                <h2>Your next summary</h2>
-                {/* <p> {text.split(" ").length} and {text.length}</p> */}
-                <p> {text.split(" ").filter(word => word !== "").length} and {text.length}</p> {/* Filter out empty strings*/}
-                <p> {0.008 * text.split(" ").length} minutes to read</p> {/* Filter out empty strings*/}
+                <h2>Your text summary</h2>
+                <p> {text.split(" ").filter(word => word !== "").length} words and {text.length} characters</p>
+                <p> {0.008 * text.split(" ").filter(word => word !== "").length} minutes to read</p>
                 <h3>Preview</h3>
-                <p> {text}</p> {/* Filter out empty strings*/}
+                <p> {text}</p>
             </div>
-        </div>
+        </>
     );
 }

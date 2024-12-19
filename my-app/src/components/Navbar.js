@@ -5,14 +5,14 @@ export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <button className="navbar-brand btn btn-link" onClick={() => props.onPageChange("home")}>
           {props.title}
-        </a>
+        </button>
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -22,42 +22,43 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
-                Home <span className="sr-only"></span>
-              </a>
+              <button className="nav-link active btn btn-link" aria-current="page" onClick={() => props.onPageChange("home")}>
+                Home
+              </button>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about">
+              <button className="nav-link btn btn-link" onClick={() => props.onPageChange("about")}>
                 {props.aboutText}
-              </a>
+              </button>
             </li>
           </ul>
-          {/* <form className="d-flex my-2 my-lg-0 ms-auto">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form> */}
-          <div className="form-check form-switch text-light">
-            <div className="form-check form-switch text-light">
-              <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
+          <form className="d-flex">
+            <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+              <input
+                className="form-check-input"
+                onClick={props.toggleMode}
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                aria-label="Toggle dark mode"
+              />
+              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+                Enable Dark Mode
+              </label>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 }
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
   aboutText: PropTypes.string.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  toggleMode: PropTypes.func.isRequired,
+  mode: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {
