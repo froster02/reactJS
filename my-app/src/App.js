@@ -16,9 +16,12 @@ function App() {
     setPage(newPage);
   };
 
+  const titleBro = "reactJS";
+
   return (
     <>
-      <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} />
+      {/* <Navbar title="reactJS" mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} /> */}
+      <Navbar title={titleBro} mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} />
       <div className="container my-3">
         {page === "home" && <TextForm heading="Enter the text below to analyze : " mode={mode} />}
         {page === "about" && <About />}

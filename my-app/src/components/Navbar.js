@@ -1,6 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const DarkModeToggle = ({ mode, onToggle }) => {
+  return (
+    <div className={`form-check form-switch text-${mode === 'light' ? 'dark' : 'light'}`}>
+      <input
+        className="form-check-input"
+        onClick={onToggle}
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+        aria-label="Toggle dark mode"
+      />
+      <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
+        Enable Dark Mode
+      </label>
+    </div>
+  );
+};
+
 export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -33,19 +51,7 @@ export default function Navbar(props) {
             </li>
           </ul>
           <form className="d-flex">
-            <div className={`form-check form-switch text-${props.mode === 'light' ? 'dark' : 'light'}`}>
-              <input
-                className="form-check-input"
-                onClick={props.toggleMode}
-                type="checkbox"
-                role="switch"
-                id="flexSwitchCheckDefault"
-                aria-label="Toggle dark mode"
-              />
-              <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-                Enable Dark Mode
-              </label>
-            </div>
+            <DarkModeToggle mode={props.mode} onToggle={props.toggleMode} />
           </form>
         </div>
       </div>
