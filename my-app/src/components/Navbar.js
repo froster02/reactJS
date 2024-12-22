@@ -13,7 +13,7 @@ const DarkModeToggle = ({ mode, onToggle }) => {
         aria-label="Toggle dark mode"
       />
       <label className="form-check-label" htmlFor="flexSwitchCheckDefault">
-        {mode === "light" ? "Enable Dark Mode" : "Disable Dark Mode"}
+        {mode === "dark" ? "Enable Dark Mode" : "Disable Dark Mode"}
       </label>
     </div>
   );

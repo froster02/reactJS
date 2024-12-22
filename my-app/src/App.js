@@ -3,10 +3,24 @@ import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
+import Alert from "./components/Alert";
 
 function App() {
   const [mode, setMode] = useState("dark"); // check whether dark mode is enabled or not.
   const [page, setPage] = useState("home"); // state to track the current page
+  const [alert, setAlert] = useState(null); //alert is a method here
+
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+
+    setTimeout(() => {
+      setAlert(null);
+    }, 2000);
+
+  }
 
   useEffect(() => {
     document.body.style.backgroundColor = mode === "light" ? "white" : "black";
@@ -21,8 +35,15 @@ function App() {
       } else {
         newMode = "light";
       }
-      document.body.style.backgroundColor = newMode === "light" ? "white" : "black";
-      document.body.style.color = newMode === "light" ? "black" : "white";
+      if (newMode === "light") {
+        showAlert("Light mode has been enabled", "success");
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+      } else {
+        showAlert("Dark mode has been enabled", "success");
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+      }
       return newMode;
     });
   };
@@ -31,14 +52,13 @@ function App() {
     setPage(newPage);
   };
 
-  const titleBro = "reactJS";
-
   return (
     <>
-      <Navbar title={titleBro} mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} />
+      <Navbar title="reactJS" mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} />
+      <Alert alert={alert} />
       <div className="container my-3" style={{ color: mode === "dark" ? "white" : "black" }}>
-        {page === "home" && <TextForm heading="Enter the text below to analyze : " mode={mode} />}
-        {page === "about" && <About />}
+        {page === "home" && <TextForm heading="Enter the text below to analyze : " mode={mode} showAlert={showAlert} />}
+        {page === "about" && <About mode={mode} />}
       </div>
     </>
   );
