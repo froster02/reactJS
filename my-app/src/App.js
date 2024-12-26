@@ -6,21 +6,20 @@ import About from "./components/About";
 import Alert from "./components/Alert";
 
 function App() {
-  const [mode, setMode] = useState("dark"); // check whether dark mode is enabled or not.
-  const [page, setPage] = useState("home"); // state to track the current page
-  const [alert, setAlert] = useState(null); //alert is a method here
+  const [mode, setMode] = useState("dark");
+  const [page, setPage] = useState("home");
+  const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
     setAlert({
       msg: message,
       type: type
-    })
+    });
 
     setTimeout(() => {
       setAlert(null);
     }, 2000);
-
-  }
+  };
 
   useEffect(() => {
     document.body.style.backgroundColor = mode === "light" ? "white" : "black";
@@ -54,10 +53,21 @@ function App() {
 
   return (
     <>
-      <Navbar title="reactJS" mode={mode} toggleMode={toggleMode} onPageChange={handlePageChange} />
+      <Navbar
+        title="reactJS"
+        mode={mode}
+        toggleMode={toggleMode}
+        onPageChange={handlePageChange}
+      />
       <Alert alert={alert} />
       <div className="container my-3" style={{ color: mode === "dark" ? "white" : "black" }}>
-        {page === "home" && <TextForm heading="Enter the text below to analyze : " mode={mode} showAlert={showAlert} />}
+        {page === "home" &&
+          <TextForm
+            heading="Enter the text below to analyze : "
+            mode={mode}
+            showAlert={showAlert}
+          />
+        }
         {page === "about" && <About mode={mode} />}
       </div>
     </>

@@ -23,7 +23,10 @@ export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
-        <button className="navbar-brand btn btn-link" onClick={() => props.onPageChange("home")}>
+        <button
+          className="navbar-brand btn btn-link"
+          onClick={() => props.onPageChange("home")}
+        >
           {props.title}
         </button>
         <button
@@ -40,12 +43,19 @@ export default function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <button className="nav-link active btn btn-link" aria-current="page" onClick={() => props.onPageChange("home")}>
+              <button
+                className="nav-link active btn btn-link"
+                aria-current="page"
+                onClick={() => props.onPageChange("home")}
+              >
                 Home
               </button>
             </li>
             <li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => props.onPageChange("about")}>
+              <button
+                className="nav-link btn btn-link"
+                onClick={() => props.onPageChange("about")}
+              >
                 {props.aboutText}
               </button>
             </li>
@@ -55,7 +65,7 @@ export default function Navbar(props) {
           </form>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 }
 

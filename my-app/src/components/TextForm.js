@@ -39,19 +39,34 @@ export default function TextForm(props) {
                         onChange={onChange}
                         id="myText"
                         rows="8"
-                        style={{ backgroundColor: props.mode === 'dark' ? '#333' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
+                        style={{
+                            backgroundColor: props.mode === 'dark' ? '#333' : 'white',
+                            color: props.mode === 'dark' ? 'white' : 'black'
+                        }}
                     ></textarea>
                     <br />
-                    <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-                    <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
-                    <button className="btn btn-primary mx-2" onClick={handleClrText}>Clear Text</button>
-                    <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy</button>
+                    <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+                        Convert to Uppercase
+                    </button>
+                    <button className="btn btn-primary mx-2" onClick={handleLowClick}>
+                        Convert to Lowercase
+                    </button>
+                    <button className="btn btn-primary mx-2" onClick={handleClrText}>
+                        Clear Text
+                    </button>
+                    <button className="btn btn-primary mx-2" onClick={handleCopy}>
+                        Copy
+                    </button>
                 </div>
             </div>
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
                 <h2>Your text summary</h2>
-                <p>{text.split(" ").filter(word => word !== "").length} words and {text.length} characters</p>
-                <p>{0.008 * text.split(" ").filter(word => word !== "").length} minutes to read</p>
+                <p>
+                    {text.split(" ").filter(word => word !== "").length} words and {text.length} characters
+                </p>
+                <p>
+                    {0.008 * text.split(" ").filter(word => word !== "").length} minutes to read
+                </p>
                 <h3>Preview</h3>
                 <p>{text}</p>
             </div>
