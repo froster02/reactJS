@@ -16,9 +16,7 @@ export default function TextForm(props) {
     };
 
     const handleCopy = () => {
-        var text = document.getElementById("myText");
-        text.select();
-        navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Text copied to clipboard", "success");
     }
 
@@ -26,7 +24,7 @@ export default function TextForm(props) {
         setText(event.target.value);
     };
 
-    const [text, setText] = useState('Enter text here');
+    const [text, setText] = useState('Enter Your Text Here');
 
     return (
         <>
@@ -45,16 +43,16 @@ export default function TextForm(props) {
                         }}
                     ></textarea>
                     <br />
-                    <button className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
+                    <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
                         Convert to Uppercase
                     </button>
-                    <button className="btn btn-primary mx-2 my-1" onClick={handleLowClick}>
+                    <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleLowClick}>
                         Convert to Lowercase
                     </button>
-                    <button className="btn btn-primary mx-2 my-1" onClick={handleClrText}>
+                    <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleClrText}>
                         Clear Text
                     </button>
-                    <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}>
+                    <button disabled={text.length === 0} className="btn btn-primary mx-2 my-1" onClick={handleCopy}>
                         Copy
                     </button>
                 </div>
@@ -62,7 +60,7 @@ export default function TextForm(props) {
             <div className="container my-3" style={{ color: props.mode === 'dark' ? 'white' : '#042743' }}>
                 <h2>Your text summary</h2>
                 <p>
-                    {text.split(" ").filter(word => word !== "").length} words and {text.length} characters
+                    {text.split(/\s/).filter(word => word !== "").length} words and {text.length} characters
                 </p>
                 <p>
                     {0.008 * text.split(" ").filter(word => word !== "").length} minutes to read

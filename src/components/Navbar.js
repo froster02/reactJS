@@ -44,7 +44,7 @@ export default function Navbar(props) {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <button
-                className="nav-link active btn btn-link"
+                className="nav-link btn btn-link"
                 aria-current="page"
                 onClick={() => props.onPageChange("home")}
               >
