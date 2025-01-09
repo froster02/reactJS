@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
 import Alert from "./components/Alert";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const [mode, setMode] = useState("dark");
@@ -69,6 +70,7 @@ function App() {
           />
         }
         {page === "about" && <About mode={mode} />}
+        <SpeedInsights />
       </div>
     </>
   );
