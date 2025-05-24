@@ -72,6 +72,28 @@ function App() {
         {page === "about" && <About mode={mode} />}
         <SpeedInsights />
       </div>
+      <footer style={{
+        textAlign: 'center',
+        padding: '20px',
+        position: 'fixed',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: mode === 'dark' ? '#1a1a1a' : '#f8f9fa'
+      }}>
+        <p style={{ margin: 0 }}>
+          built by <a
+            href="https://github.com/froster02/reactJS.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: mode === 'dark' ? '#00ff00' : '#007bff',
+              textDecoration: 'none'
+            }}
+          >
+            @froster02
+          </a>
+        </p>
+      </footer>
     </>
   );
 }
